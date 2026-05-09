@@ -1,5 +1,7 @@
 # 项目管理技能体系 - 分享版
 
+> **GitHub 仓库**：[github.com/ZiMing-X/project-management-skills](https://github.com/ZiMing-X/project-management-skills)
+
 ## 这是什么
 
 一套基于 Markdown 文件的项目管理方法，让 AI 能够在每次新会话中自动理解项目状态、追踪任务进展。
