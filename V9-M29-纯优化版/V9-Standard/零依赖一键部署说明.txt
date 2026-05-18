@@ -1,0 +1,73 @@
+V9-Standard v2.9.0 零依赖一键部署说明
+==================================================
+部署目标：将 V9-Standard 技能包部署到 ~/.workbuddy/skills/
+部署方式：用户提供源路径，AI 直接执行文件操作
+依赖条件：无（无需安装任何技能）
+==================
+
+部署步骤
+----------
+1. 用户提供 V9-Standard 源目录的绝对路径
+2. AI 读取源目录下的所有 .md 技能文件
+3. AI 为每个技能文件建立子目录（从 frontmatter 的 name 字段提取）
+4. AI 将每个技能文件写入 ~/.workbuddy/skills/<name>/SKILL.md
+5. AI 验证所有文件部署成功
+
+部署命令（直接复制粘贴给 AI）
+------------------------------
+请帮我把以下目录的技能文件部署到 ~/.workbuddy/skills/：
+
+<此处填入 V9-Standard 源目录的绝对路径>
+
+部署清单（20个标准技能）
+----------------------------
+checkpoint-guard.md         →  skills/checkpoint-guard/SKILL.md
+project-manager.md          →  skills/project-manager/SKILL.md
+project-tracker.md          →  skills/project-tracker/SKILL.md
+session-guard.md            →  skills/session-guard/SKILL.md
+shutdown-protocol.md        →  skills/shutdown-protocol/SKILL.md
+automation-task-auditor.md →  skills/automation-task-auditor/SKILL.md
+automation-verifier.md      →  skills/automation-verifier/SKILL.md
+problem-solution-standard.md → skills/problem-solution-standard/SKILL.md
+p10-archive-router.md      →  skills/p10-archive-router/SKILL.md
+prompt-advisor.md           →  skills/prompt-advisor/SKILL.md
+prompt-optimizer.md        →  skills/prompt-optimizer/SKILL.md
+install-skill-package.md   →  skills/install-skill-package/SKILL.md
+v9base-deploy.md           →  skills/v9base-deploy/SKILL.md
+v9-release-checker.md     →  skills/v9-release-checker/SKILL.md
+token-monitor.md            →  skills/token-monitor/SKILL.md
+context-survival.md         →  skills/context-survival/SKILL.md
+session-manager.md          →  skills/session-manager/SKILL.md
+window-aware.md            →  skills/window-aware/SKILL.md
+workbuddy-debug-helper.md →  skills/workbuddy-debug-helper/SKILL.md
+skill-integration-merge.md →  skills/skill-integration-merge/SKILL.md
+
+部署后验证
+----------
+1. 重启 WorkBuddy（关闭当前会话，重新打开）
+2. 在新会话中输入 /skills 检查技能是否加载
+3. 或直接触发技能测试：@project-tracker
+
+版本信息
+--------
+V9-Standard: v2.9.0
+技能数量: 20个标准技能
+部署格式: 子目录结构 (skills/<name>/SKILL.md)
+最后更新: 2026-05-19
+
+常见问题
+--------
+Q: V9-Standard 和 V9-Base 有什么区别？
+A: V9-Base 包含 5 个核心治理技能；V9-Standard 包含
+   Base 全部 5 个 + 15 个治理工具/部署/记忆技能，共 20 个。
+
+Q: 部署后技能没有响应？
+A: 需要重启 WorkBuddy 才能加载新技能。
+
+Q: 可以从 V9-Base 直接升级到 V9-Standard 吗？
+A: 可以。直接部署 V9-Standard 源目录，AI 会自动覆盖同名技能，
+   并新增 V9-Base 中没有的 15 个技能。
+
+Q: 零依赖部署和旧版一键部署脚本（deploy.bat/deploy.sh）有什么区别？
+A: 旧版脚本已废弃。零依赖方式直接告诉 AI 源路径即可，
+   AI 会自动完成所有文件操作，无需任何前置技能或脚本。
