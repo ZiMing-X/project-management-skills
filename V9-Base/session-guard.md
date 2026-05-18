@@ -4,6 +4,7 @@ description: 会话守护技能。每次新会话启动时调用，读取 TRUTH-
 agent_created: true
 allowed-tools: Read, Write
 version: v2.9.0
+updated: 2026-05-19
 source: xmgl-M29-批次7-P039
 ---
 

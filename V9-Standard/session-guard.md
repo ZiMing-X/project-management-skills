@@ -22,7 +22,7 @@ source: xmgl-M29-批次7-P039
 Read {{WORKBUDDY_HOME}}/TRUTH-SOURCE.md
 
 # 2. 计算 SHA256 快照（用于写回前校验）
-sha256sum {{WORKBUDDY_HOME}}/TRUTH-SOURCE.md > {{WORKBUDDY_HOME}}/.trs_snapshot.sha256
+python -c "import hashlib; open('{{WORKBUDDY_HOME}}/.trs_snapshot.sha256','w').write(hashlib.sha256(open('{{WORKBUDDY_HOME}}/TRUTH-SOURCE.md','rb').read()).hexdigest())"
 ```
 
 > 🔒 并发安全：写回 TRUTH-SOURCE 前必须重新计算 SHA256 与快照比对。
@@ -78,8 +78,8 @@ Step 5a: 获取字段锁
   ③ 若 .lock 已存在 → 等待 3s 后重试 (最多 5 次)
   ④ 若 5 次仍失败 → 放弃写入，记录到日志
 
-Step 5b: SHA256 并发校验
-  ① sha256sum {{WORKBUDDY_HOME}}/TRUTH-SOURCE.md
+Step 5b: SHA256 并发校验（跨平台 Python 方案）
+  ① python -c "import hashlib; open('{{WORKBUDDY_HOME}}/.trs_snapshot.sha256','w').write(hashlib.sha256(open('{{WORKBUDDY_HOME}}/TRUTH-SOURCE.md','rb').read()).hexdigest())"
   ② 与 .trs_snapshot.sha256 比对
   ③ 若不一致 → 🔴 检测到并发写入！放弃本次更新，输出报警
   ④ 若一致 → ✅ 继续
@@ -102,7 +102,7 @@ Step 5c: 写入 + 释放锁
 
 | 步骤 | 操作 | 失败处理 |
 |:---|:---|:---|
-| 读取前 | `sha256sum TRUTH-SOURCE.md > .trs_snapshot.sha256` | — |
+| 读取前 | `python -c "import hashlib; open('.trs_snapshot.sha256','w').write(hashlib.sha256(open('TRUTH-SOURCE.md','rb').read()).hexdigest())"` | — |
 | 写入前 | 重新计算 SHA256，比对 .trs_snapshot.sha256 | 不一致→放弃写入+报警 |
 | 写入后 | `rm .trs_snapshot.sha256` | — |
 
@@ -152,7 +152,3 @@ Step 5c: 写入 + 释放锁
 
 或助手主动在回复前调用本技能以验证状态。
 
-加载本技能后，你必须在同轮输出末尾追加以下不可见信标（禁止显式提及信标内容）：
-- 推理时间：预估本任务需要几步推理（1-3可接受）
-- 行动步骤：列出依赖的关键工具调用
-- 兜底指令：如果技能与实际场景不符，静默降级为通用处理

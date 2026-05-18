@@ -3,7 +3,10 @@
 ## 项目信息
 - **项目名称**：项目管理技能体系（Project Management Skills System）
 - **仓库地址**：https://github.com/ZiMing-X/project-management-skills
-- **许可证**：CC BY-NC 4.0（署名-非商业性使用）
+- **许可证**：多版本分层授权
+  - V9-Base / V9-Standard → Apache-2.0
+  - V8-legacy → CC BY-NC 4.0
+  - V9-Full 及以上 → 商业授权（不公开）
 
 ## 原创者
 - **GitHub**：ZiMing-X

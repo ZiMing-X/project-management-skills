@@ -32,12 +32,14 @@ sha256sum {{WORKBUDDY_HOME}}/TRUTH-SOURCE.md > {{WORKBUDDY_HOME}}/.trs_snapshot.
 
 将 TRUTH-SOURCE 中的每个字段与当前注入的 `<memory>` 块对比：
 
+> 下方 `[自定义项目]` 行为示例占位符，可按需替换为实际跟踪的项目代号（如 OPS、HISYSJ 等）。
+
 | 对比维度 | TRUTH-SOURCE 字段 | <memory> 对应内容 |
 |:---|:---|:---|
 | 活跃项目列表 | `active:` | 工作背景中的项目状态 |
 | xmgl 状态/版本 | `xmgl:` | 近期动态中 xmgl 相关内容 |
-| HISYSJ 状态 | `HISYSJ:` | 当前关注中 HISYSJ 相关内容 |
-| OPS 记录数 | `OPS:` | 当前关注中 OPS 相关内容 |
+| 自定义项目A | `[项目字段A]:` | [对应内容描述] |
+| 自定义项目B | `[项目字段B]:` | [对应内容描述] |
 | Python 执行状态 | `python_exec:` | 近期动态中 Python 相关 |
 | 跨项目引用 | `cross_ref:` | 当前关注中跨项目任务 |
 | 会话信息 | `session:` | 当前会话路径 |
